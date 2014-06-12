@@ -315,6 +315,33 @@
   <ItemGroup>
     <Folder Include="images\BidirectionalDashboard\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\DecadeVuMeter.Icon.png" />
+    <Resource Include="icons\Dial180East.Icon.png" />
+    <Resource Include="icons\Dial180North.Icon.png" />
+    <Resource Include="icons\Dial180South.Icon.png" />
+    <Resource Include="icons\Dial180West.Icon.png" />
+    <Resource Include="icons\Dial360.Icon.png" />
+    <Resource Include="icons\Dial90NorthEast.Icon.png" />
+    <Resource Include="icons\Dial90NorthWest.Icon.png" />
+    <Resource Include="icons\Dial90SouthEast.Icon.png" />
+    <Resource Include="icons\Dial90SouthWe-st.Icon.png" />
+    <Resource Include="icons\Dial90SouthWest.Icon.png" />
+    <Resource Include="icons\DiamondSlider.Icon.png" />
+    <Resource Include="icons\FiveStarRanking.Icon.png" />
+    <Resource Include="icons\Knob360.Icon.png" />
+    <Resource Include="icons\MatrixLedCharacter.Icon.png" />
+    <Resource Include="icons\MatrixLedMarquee.Icon.png" />
+    <Resource Include="icons\Odometer.Icon.png" />
+    <Resource Include="icons\OdometerDigit.Icon.png" />
+    <Resource Include="icons\PerformanceMonitor.Icon.png" />
+    <Resource Include="icons\PlainThermometer.Icon.png" />
+    <Resource Include="icons\ProgressBar.Icon.png" />
+    <Resource Include="icons\RoundLed.Icon.png" />
+    <Resource Include="icons\SixteenSegmentLED.Icon.png" />
+    <Resource Include="icons\TickCross.Icon.png" />
+    <Resource Include="icons\WallThermometer.Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

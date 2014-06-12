@@ -204,7 +204,7 @@ namespace VisualME7.Controls
 #if WPF
             return (Storyboard)this.ResourceRoot.Resources[name];
 #else
-            return (Storyboard)this.ResourceRoot.FindName(name);
+            return (Storyboard)this.ResourceRoot.FindResource(name);
 #endif
         }
 

@@ -1,8 +1,26 @@
 ﻿<Window x:Class="VisualME7.Controls.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:db="clr-namespace:VisualME7.Controls">
     <Grid>
-        
+        <db:Dial180North FaceTextVisibility="{Binding Path=FaceTextVisibility}"
+            FaceTextColor="{Binding Path=FaceTextColor}"                     
+            FaceTextFormat="{Binding Path=FaceTextFormat}"                     
+                     
+            ValueTextVisibility="{Binding Path=ValueTextVisibility}"
+            ValueTextColor="{Binding Path=ValueTextColor}"                     
+            ValueTextFormat="{Binding Path=ValueTextFormat}"                     
+            FaceColorRange="{Binding Path=FaceColorRange}"
+            NeedleColorRange="{Binding Path=NeedleColorRange}"
+                         
+            IsBidirectional="{Binding Path=IsBidirectional}"
+            Minimum="{Binding Path=Minimum}"                     
+            Maximum="{Binding Path=Maximum}"     
+            AnimationDuration="{Binding Path=AnimationDuration}"
+              
+            Value="{Binding CurrentValue, Mode=TwoWay}" Margin="12,12,329,207">
+
+        </db:Dial180North>
     </Grid>
 </Window>
