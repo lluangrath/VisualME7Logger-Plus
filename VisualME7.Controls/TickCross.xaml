@@ -1,0 +1,63 @@
+﻿<db:BinaryDashboard x:Class="VisualME7.Controls.TickCross"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+               xmlns:db="clr-namespace:VisualME7.Controls"
+
+    Width="100" Height="100">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+
+            <Storyboard x:Name="_swipe" x:Key="_swipe">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_false" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0.6000000" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_true" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0.6000000" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Path RenderTransformOrigin="0,0"   HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Stretch="Fill"  Data="M16.453125,21.587288 C16.992188,25.2201 18.597656,28.759163 21.269531,32.204475 L22.324219,33.540413 L23.167969,32.450569 C27.082031,27.458382 30.632813,24.962288 33.820313,24.962288 C36.304688,24.962288 38.191406,26.849007 39.480469,30.622444 L38.671875,30.552132 C37.546875,30.552132 35.964844,31.307991 33.925781,32.81971 C31.886719,34.331429 30.164063,36.036507 28.757813,37.934944 L27.703125,39.37635 L28.722656,40.360725 C32.496094,44.016975 36.433594,45.8451 40.535156,45.8451 C38.332031,50.298225 36.035156,52.524788 33.644531,52.524788 C31.488281,52.524788 28.371094,50.62635 24.292969,46.829475 L22.675781,45.352913 L22.148438,46.091194 C18.492188,51.622444 15.492188,54.388069 13.148438,54.388069 C10.453125,54.388069 7.8046875,52.196663 5.203125,47.81385 C5.5546875,47.837288 5.8125,47.849007 5.9765625,47.849007 C9.046875,47.849007 12.46875,45.505257 16.242188,40.817757 L17.191406,39.622444 L15.960938,38.286507 C12.515625,34.630257 10.792969,31.524788 10.792969,28.9701 C10.792969,26.884163 12.679688,24.423225 16.453125,21.587288 z" x:Name="_false" Opacity="0">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop x:Name="falseHighColor" Color="#FFFA6565" Offset="0"/>
+                    <GradientStop x:Name="falseLowColor" Color="#FF7C0505" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="0" AngleY="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+        <Path RenderTransformOrigin="0,0"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Stretch="Fill" Data="M52.734375,9.5990067 L53.964844,11.356819 C48.949219,15.130257 43.371094,20.942757 37.230469,28.794319 C31.089844,36.645882 26.402344,43.981819 23.167969,50.802132 L20.566406,52.559944 C18.410156,54.059944 16.945313,55.173225 16.171875,55.899788 C15.867188,54.798225 15.199219,52.993538 14.167969,50.485725 L13.183594,48.200569 C11.777344,44.919319 10.470703,42.493538 9.2636719,40.923225 C8.0566406,39.352913 6.703125,38.309944 5.203125,37.794319 C7.734375,35.122444 10.054688,33.786507 12.164063,33.786507 C13.96875,33.786507 15.972656,36.235725 18.175781,41.134163 L19.265625,43.5951 C23.226563,36.915413 28.3125,30.423225 34.523438,24.118538 C40.734375,17.81385 46.804688,12.974007 52.734375,9.5990067 z" x:Name="_true" Opacity="0">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop x:Name="trueHighColor" Color="#FF6CFA20" Offset="0"/>
+                    <GradientStop x:Name="trueLowColor" Color="#FF1C4904" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="0" AngleY="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+
+    </Grid>
+</db:BinaryDashboard>

@@ -1,0 +1,235 @@
+﻿<db:Dial180 x:Class="VisualME7.Controls.Dial180West"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:db="clr-namespace:VisualME7.Controls"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:VisualME7_Controls="clr-namespace:VisualME7.Controls;assembly=VisualME7.Controls"
+  Width="92" Height="162">
+    <Grid x:Name="LayoutRoot" Height="90" Width="162" VerticalAlignment="Top">
+        <Grid.Resources>
+            <Storyboard x:Name="_swipe" x:Key="_swipe">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame x:Name="_value" KeyTime="00:00:0.75" Value="89.574"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Name="_moveGrab" x:Key="_moveGrab">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0.75" Value="150" x:Name="_grabPos"/>
+                </DoubleAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+        </Grid.Resources>
+
+        <Path Margin="-34.5,35.333,36.5,-36.333" Data="M79.908371,2 C101.42219,2 120.89922,10.588699 134.99791,24.474991 C142.0472,31.418026 147.75186,39.685452 151.69432,48.865921 C153.66551,53.4561 155.19612,58.274513 156.23393,63.26976 C156.75284,65.767365 157.14853,68.309189 157.41452,70.888779 L157.78583,78.131157 L158,78.131157 L158,79 L158,84 L158,89 L2,89 L2,79 L2.0136156,79 L2,78.734421 C1.9999982,36.354954 36.880947,2 79.908371,2 z" Stretch="Fill" Stroke="#FF000000" StrokeThickness="4" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <RadialGradientBrush GradientOrigin="0.5,1.17">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.458" ScaleY="1.318"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform X="0.013" Y="0.012"/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop x:Name="_colourRangeStart" Color="#FFFFFFFF" Offset="0"/>
+                    <GradientStop x:Name="_colourRangeEnd" Color="#FF000000" Offset="1"/>
+                </RadialGradientBrush>
+            </Path.Fill>
+        </Path>
+        <db:Scale MarkSize="6" Margin="6,5,6,-65" x:Name="_scale"/>
+        <TextBlock Margin="57.991,30.01,61.009,0" x:Name="_txt0" Width="43.001" Height="12.021" FontSize="10" Foreground="#FFFFFFFF" Text="00123" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.504,0.472" TextAlignment="Right">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-90"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Margin="57.642,0,60.358,-35.719" VerticalAlignment="Bottom" Height="12.321" TextWrapping="Wrap" x:Name="_txt4" Width="44.334" FontSize="10" Foreground="#FFFFFFFF" Text="100" TextAlignment="Left" RenderTransformOrigin="0.541,0.639" >
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-90"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Margin="-6.265,0,0,2.995" TextWrapping="Wrap" x:Name="_txt2" Height="12" FontSize="10" Foreground="#FFFFFFFF" Text="050" TextAlignment="Center" RenderTransformOrigin="0.493,0.473" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" >
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-90"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Margin="-46.977,0,0,32.287" TextWrapping="Wrap" x:Name="_txt1" RenderTransformOrigin="0.511,0.547" FontSize="10" Foreground="#FFFFFFFF" Text="025" TextAlignment="Center"  Width="67" HorizontalAlignment="Left"   Height="11.779" VerticalAlignment="Bottom">
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform ScaleX="1" ScaleY="1"/>
+        			<SkewTransform AngleX="0" AngleY="0"/>
+        			<RotateTransform Angle="-45"/>
+        			<TranslateTransform X="47.79" Y="-19.676"/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Margin="12.335,0,0,-42" Foreground="#FFFFFFFF" TextWrapping="Wrap" x:Name="_txt3" Width="50.072" Height="11.778" RenderTransformOrigin="0.488,0.564" FontSize="10" Text="075" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform ScaleX="1" ScaleY="1"/>
+        			<SkewTransform AngleX="0" AngleY="0"/>
+        			<RotateTransform Angle="-135"/>
+        			<TranslateTransform X="-0.396" Y="-0.588"/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <Rectangle Height="0.8" HorizontalAlignment="Left" Margin="159.5,131,0,0" VerticalAlignment="Top" Width="11" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5"/>
+        <Path Height="72.816" x:Name="path" Width="8.5" RenderTransformOrigin="0.463,1.007" Stretch="Fill" Stroke="#FF000000" Data="M99.875,41.875 L95.916512,115.45777 L103.27318,115.45777 z" Canvas.Top="49" Canvas.Left="47.5" Margin="0,0,35.046,-30.213" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
+            <Path.Fill>
+                <RadialGradientBrush GradientOrigin="-0.076,1.25">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.784" ScaleY="1.784"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF615A5A" x:Name="_needleHighColour" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" x:Name="_needleLowColour"  Offset="1"/>
+
+                </RadialGradientBrush>
+            </Path.Fill>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="-39.683624267578125" Y="-40.998931884765625"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <Canvas x:Name="_grabHandle" RenderTransformOrigin="0.5,0.968" Canvas.Top="20" Canvas.Left="68" Margin="0,38.167,29,-30.167" HorizontalAlignment="Right" Width="24">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="-38.374607086181641" Y="-38.049148559570312"/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Rectangle x:Name="_grabHighlight" Fill="Transparent" RenderTransformOrigin="0.5,1" Height="77" Width="8" Canvas.Left="8" Canvas.Top="3"/>
+            <Path Height="7" Width="6.5" Fill="#FFF0CD2D" Stretch="Fill" Stroke="#FF000000" Data="M0.5,0.5 L6,3 C4,4 2.1666667,6.5 0.5,6.5 z" Canvas.Top="12"/>
+            <Path Height="7" Width="7" Fill="#FFF0CD2D" Stretch="Fill" Stroke="#FF000000" Data="M0.5,0.5 L6,3 C4,4 2.1666667,6.5 0.5,6.5 z" RenderTransformOrigin="0.5,0.5" Canvas.Top="12" Canvas.Left="17">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+
+        </Canvas>
+
+
+        <Path x:Name="_needleCoverCircle" Height="16.167" Margin="63.532,71.134,65.468,0" VerticalAlignment="Top" Width="32.5" Stretch="Fill" Stroke="#FF080808" Data="M12.5,0.5 C19.127438,0.5 24.5,5.8726006 24.5,12.5 L0.5,12.5 C0.49999762,5.8725972 5.8725696,0.5 12.5,0.5 z" RenderTransformOrigin="0.652,3.842" Opacity="1" >
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="48.456" Y="-48.456"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <RadialGradientBrush GradientOrigin="0.5,1.038">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.691" ScaleY="1.691"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform X="0.019999999552965164" Y="0.38400000333786011"/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop  Color="#FF2F2F2F"/>
+                    <GradientStop  Color="#FFC9CBCC" Offset="1"/>
+                </RadialGradientBrush>
+            </Path.Fill>
+        </Path>
+        <TextBlock x:Name="_text" Text="1234" TextAlignment="Center" FontSize="8" Margin="32.667,0,31.333,4" VerticalAlignment="Bottom" Height="12" RenderTransformOrigin="0.5,0.5"   >
+        	<TextBlock.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-90.426"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TextBlock.RenderTransform>
+        </TextBlock>
+        <Path IsHitTestVisible="False" Margin="16.5,3.5,75.5,41.5" Data="M0.4965041,0 C12.845129,3.7024219E-07 33.571297,4.3085423 39.679958,7.7537026 C62.020779,20.35347 63.59177,26.029737 70.02346,33.922451 C70.02346,33.922451 58.01944,27.529196 44.014748,28.82148 C34.879047,29.664478 34.192345,29.390844 20.673592,32.630169 C8.5028486,35.54649 9.0483177E-15,43.614582 9.0483177E-15,43.614582 L0,0.016714215 z" Stretch="Fill" Opacity="0.4" x:Name="_glowTop" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <RadialGradientBrush GradientOrigin="0.505,0.21">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.284" ScaleY="1.284"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-54.115"/>
+                            <TranslateTransform X="-0.152" Y="-0.221"/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFFFFFFF"/>
+                    <GradientStop Color="#4BFFFFFF" Offset="1"/>
+                </RadialGradientBrush>
+            </Path.Fill>
+        </Path>
+
+
+        <Path IsHitTestVisible="False" Margin="-34.5,35,36.5,-36" RenderTransformOrigin="0.5,0.500000005239969" Data="M79.413658,6.3339815 C38.868587,6.333982 5.999999,37.529858 6.0000019,76.01236 L6.0128317,76.253517 L6.0000019,76.253517 L6.0000019,85.333977 L153,85.333977 L153,80.793747 L153,76.253517 L153,75.464569 L152.79819,75.464569 L152.4483,68.888161 C152.19766,66.545769 151.8248,64.237679 151.33583,61.969738 C150.35788,57.433826 148.91559,53.058483 147.05812,48.890392 C143.34311,40.554104 137.96756,33.046902 131.32495,26.742306 C118.03966,14.132915 99.686295,6.333982 79.413658,6.3339815 z M79.908371,2 C101.42219,2.000001 120.89922,10.5887 134.99791,24.474991 C142.0472,31.418026 147.75186,39.685452 151.69432,48.865921 C153.66551,53.4561 155.19612,58.274513 156.23393,63.26976 C156.75284,65.767365 157.14853,68.309189 157.41452,70.888779 L157.78583,78.131157 L158,78.131157 L158,79 L158,84 L158,89 L2,89 L2,79 L2.0136151,79 L2,78.734421 C1.9999982,36.354954 36.880947,2.000001 79.908371,2 z" Stretch="Fill" StrokeThickness="4" x:Name="_bezel" Opacity="0.25">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="-0.044,0.571" StartPoint="1.028,0.522">
+                    <GradientStop Color="#FF040404"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+
+
+
+        <TextBlock Foreground="AliceBlue" x:Name="_debug" IsHitTestVisible="False" Visibility="Visible" Text=""/>
+    </Grid>
+</db:Dial180>

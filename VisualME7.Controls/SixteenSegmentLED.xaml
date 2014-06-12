@@ -1,0 +1,28 @@
+﻿<db:PlatformIndependentDashboard x:Class="VisualME7.Controls.SixteenSegmentLED"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   xmlns:db="clr-namespace:VisualME7.Controls"   
+    Width="35" Height="58" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" >
+	<Grid x:Name="LayoutRoot" >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.084*"/>
+			<RowDefinition Height="0.916*"/>
+		</Grid.RowDefinitions>
+		<Path HorizontalAlignment="Left" Margin="4,-2.048,0,0" Width="11.906" Fill="#FF5E5757" Stretch="Fill" Data="M3.2784386,3.57446 L4.9449301,1.6165119 L12.325476,1.6233096 L13.839125,3.4928784 L12.115667,5.5324078 L5.053112,5.5324078 z" VerticalAlignment="Top" Grid.Row="1" Height="5" x:Name="_thl"/>
+		<Path HorizontalAlignment="Left" Margin="0.373,1.25,0,0" Width="5" Fill="#FF5E5757" Stretch="Fill" Data="M4.2532153,4.3106894 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Grid.Row="1" VerticalAlignment="Top" Height="20" x:Name="_tvl"/>
+		<Path HorizontalAlignment="Left" Margin="-0.002,22.25,0,10.75" Width="5" Fill="#FF5E5757" Stretch="Fill" Data="M4.2532153,4.3106894 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Grid.Row="1" x:Name="_bvl"/>
+		<Path HorizontalAlignment="Left" Margin="4,19.25,0,0" Width="12.562" Fill="#FF5E5757" Stretch="Fill" Data="M3.2784386,3.57446 L4.9449301,1.6165119 L12.325476,1.6233096 L14.334157,3.5255113 L12.115667,5.5324078 L5.053112,5.5324078 z" VerticalAlignment="Top" Height="5" Grid.Row="1" x:Name="_mhl"/>
+		<Path HorizontalAlignment="Left" Margin="4,0,0,7.952" Width="11.906" Fill="#FF5E5757" Stretch="Fill" Data="M3.2784386,3.57446 L4.9449301,1.6165119 L12.325476,1.6233096 L13.839125,3.4928784 L12.115667,5.5324078 L5.053112,5.5324078 z" VerticalAlignment="Bottom" Height="5" Grid.Row="1" x:Name="_bhl"/>
+		<Path Margin="0,-1.667,4.167,0" Width="11.906" Fill="#FF5E5757" Stretch="Fill" Data="M3.2784386,3.57446 L4.9449301,1.6165119 L12.325476,1.6233096 L13.839125,3.4928784 L12.115667,5.5324078 L5.053112,5.5324078 z" VerticalAlignment="Top" Grid.Row="1" Height="5" HorizontalAlignment="Right" x:Name="_thr"/>
+		<Path Margin="15,1.167,15,0" Fill="#FF5E5757" Stretch="Fill" Data="M4.2532153,4.3106894 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Height="20" VerticalAlignment="Top" Grid.Row="1" x:Name="_tvm"/>
+		<Path Margin="15.333,21.667,14.667,10.708" Fill="#FF5E5757" Stretch="Fill" Data="M4.2783637,4.1343241 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Grid.Row="1" x:Name="_bvm"/>
+		<Path Margin="0,19.167,4.167,0" Width="12.625" Fill="#FF5E5757" Stretch="Fill" Data="M2.7284029,3.5255113 L4.9449301,1.6165119 L12.325476,1.6233096 L13.839125,3.4928784 L12.115667,5.5324078 L5.053112,5.5324078 z" VerticalAlignment="Top" Height="5" Grid.Row="1" HorizontalAlignment="Right" x:Name="_mhr"/>
+		<Path Margin="0,0,3.833,8" Width="11.906" Fill="#FF5E5757" Stretch="Fill" Data="M3.2784386,3.57446 L4.9449301,1.6165119 L12.325476,1.6233096 L13.839125,3.4928784 L12.115667,5.5324078 L5.053112,5.5324078 z" Height="5" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Right" x:Name="_bhr"/>
+		<Path Margin="0,1.333,-0.333,0" Fill="#FF5E5757" Stretch="Fill" Data="M4.2532153,4.3106894 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Height="20" VerticalAlignment="Top" Grid.Row="1" Width="5" HorizontalAlignment="Right" x:Name="_tvr"/>
+		<Path Margin="0,22.167,-0.167,10.833" Fill="#FF5E5757" Stretch="Fill" Data="M4.2532153,4.3106894 L4.6158853,4.7162137 L4.8268228,4.9994168 L4.8017411,9.2860546 L4.2861328,9.9543867 L3.7817416,9.3046188 L3.7566595,4.9140453 z" Grid.Row="1" Width="5" HorizontalAlignment="Right" x:Name="_bvr"/>
+		<Path Height="14" HorizontalAlignment="Left" Margin="5.923,3.772,0,0" VerticalAlignment="Top" Width="8" Grid.Row="1" Fill="#FF5E5757" Stretch="Fill" Data="M6.497612,9.4762678 L6.497612,14.574987 C6.497612,14.574987 10.114999,28.020569 10.614999,27.909456 C11.114999,27.798346 14.077252,27.910139 14.077252,27.910139 L14.145537,24.479408 L9.6062737,9.5644684 z" x:Name="_tdl"/>
+		<Path Height="14" HorizontalAlignment="Right" Margin="0,3.875,6.125,0" VerticalAlignment="Top" Width="8" Grid.Row="1" Fill="#FF5E5757" Stretch="Fill" Data="M24.853891,8.2791977 L20.608486,18.485577 L20.986256,20.927309 L24.147358,21.037172 L28.037947,11.445837 L28.037947,8.2791977 z" x:Name="_tdr"/>
+		<Path HorizontalAlignment="Right" Margin="0,25.125,5.75,13.875" Width="8" Fill="#FF5E5757" Stretch="Fill" Data="M6.497612,9.4762678 L6.497612,14.574987 C6.497612,14.574987 10.114999,28.020569 10.614999,27.909456 C11.114999,27.798346 14.077252,27.910139 14.077252,27.910139 L14.145537,24.479408 L9.6062737,9.5644684 z" Grid.Row="1" x:Name="_bdr"/>
+		<Path HorizontalAlignment="Left" Margin="5.75,25.125,0,13.875" Width="8" Fill="#FF5E5757" Stretch="Fill" Data="M24.853891,8.2791977 L20.608486,18.485577 L20.986256,20.927309 L24.147358,21.037172 L28.037947,11.445837 L28.037947,8.2791977 z" Grid.Row="1" x:Name="_bdl"/>
+	</Grid>
+</db:PlatformIndependentDashboard>

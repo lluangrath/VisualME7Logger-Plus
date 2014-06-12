@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VisualME7.Controls.BidirectionalDashboard" Collapsed="true">
+    <Position X="25.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBIAgJAAEAQQQASAAgCAAAgAAAEAABAAAAAkEAAAQEA=</HashCode>
+      <FileName>BidirectionalDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.WallThermometer" Collapsed="true">
+    <Position X="27.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAICAAAAACCQAAAEgAAAABIAEQAAAAJA=</HashCode>
+      <FileName>WallThermometer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.BidirectionalDial" Collapsed="true">
+    <Position X="25.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAABgAQBAgACAEQAAAhAAAAEAAAAEAAAAAA=</HashCode>
+      <FileName>BiDirectionalDial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.BinaryDashboard" Collapsed="true">
+    <Position X="33.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAABAAAIAAAIgAAAAECAAAIAAgAAAgBAkAAIAAIAA=</HashCode>
+      <FileName>BinaryDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dashboard" Collapsed="true">
+    <Position X="28.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAgAACQJAQAAIAQ8AAUSIQAgGBlCIEaBAQggAgFCAA=</HashCode>
+      <FileName>Dashboard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VisualME7.Controls.DecadeVuMeter" Collapsed="true">
+    <Position X="31.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEACgAAAIIEIAAAAASCBQCAIAgAAAAJIAAAAAEAEA=</HashCode>
+      <FileName>DecadeVuMeter.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial180" Collapsed="true">
+    <Position X="21.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA4AAMAAAgABAYCAAAAACkQABBBwAAAABBAAAAAAAQA=</HashCode>
+      <FileName>Dial180.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial360" Collapsed="true">
+    <Position X="27" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAABAIAAAAAACAQAAAB4AAAEBIAAAAAAAAA=</HashCode>
+      <FileName>Dial360.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial90" Collapsed="true">
+    <Position X="29.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AA4AAEAAAgABAYCAAAACCkQABBBwAAAABBAAAAAAAQA=</HashCode>
+      <FileName>Dial90.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial90NorthEast" Collapsed="true">
+    <Position X="26.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial90NorthEast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial90NorthWest" Collapsed="true">
+    <Position X="28.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial90NorthWest.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial90SouthEast" Collapsed="true">
+    <Position X="30" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial90SouthEast.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial90SouthWest" Collapsed="true">
+    <Position X="31.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial90SouthWest.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.DiamondSlider" Collapsed="true">
+    <Position X="23.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAiACAAAAJAAIQAAgAQGAYAAAQgEQAABIAAUJAIAAA=</HashCode>
+      <FileName>DiamondSlider.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.FiveStarRanking" Collapsed="true">
+    <Position X="29.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAjAAAAAAAAAAIQCggAAiAQBAAAwAAEABIAAEAABAAA=</HashCode>
+      <FileName>FiveStarRanking.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Knob360" Collapsed="true">
+    <Position X="24.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAABAIAAAAAACAQAAABwAAAEBIAAAAAAAAA=</HashCode>
+      <FileName>Knob360.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.MatrixLedCharacter" Collapsed="true">
+    <Position X="32" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAECgAAAIIAIAAAABSAAABAIAAAAAAOIQACABBAEg=</HashCode>
+      <FileName>MatrixLedCharacter.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.MatrixLedMarquee" Collapsed="true">
+    <Position X="34" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AByAAAwAAIghAMAIEEASIAUFAIABMAAhNBQCCGkgAEA=</HashCode>
+      <FileName>MatrixLedMarquee.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Odometer" Collapsed="true">
+    <Position X="24.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAABAADAAAIIBBKICEAEEAAwAhIAAAAIQAAgAAQEA=</HashCode>
+      <FileName>Odometer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.OdometerDigit" Collapsed="true">
+    <Position X="30" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAIAAAABAIAAIBAAAAEAAAgDqAACAIQAAAAAAAE=</HashCode>
+      <FileName>OdometerDigit.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.PerformanceMonitor" Collapsed="true">
+    <Position X="29.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAFIAQABAgAAAaIIAQAgDgQCAQZhACRAFMBAwAAKABA=</HashCode>
+      <FileName>PerformanceMonitor.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.PlainThermometer" Collapsed="true">
+    <Position X="21.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACgAIQBAgAACCQAAAAwAAAABIAAUAAAAJA=</HashCode>
+      <FileName>PlainThermometer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.PlatformIndependentDashboard" Collapsed="true">
+    <Position X="27.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAEQAAACAgAAAAAAAAAgAAAAAAAAAAAIACAAAgAAI=</HashCode>
+      <FileName>PlatformIndependentDashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.ProgressBar" Collapsed="true">
+    <Position X="27.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQAEAAAEAIQAChAUCAQAQIAwAIAABIAAEAAAAAA=</HashCode>
+      <FileName>ProgressBar.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.RoundLed" Collapsed="true">
+    <Position X="34.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>RoundLed.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.SixteenSegmentLED" Collapsed="true">
+    <Position X="26.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQgAAAgAIAAAAAAAQSgAQAAoBgAAAAYIAAAAAAAEA=</HashCode>
+      <FileName>SixteenSegmentLED.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.TickCross" Collapsed="true">
+    <Position X="32.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>TickCross.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial180East" Collapsed="true">
+    <Position X="20.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial180East.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial180West" Collapsed="true">
+    <Position X="22.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial180West.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial180North" Collapsed="true">
+    <Position X="19" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial180North.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisualME7.Controls.Dial180South" Collapsed="true">
+    <Position X="24.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAACAAAAAAAAAAAAAAAAEAIAAAAAAAAA=</HashCode>
+      <FileName>Dial180South.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

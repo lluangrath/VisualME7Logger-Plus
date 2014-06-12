@@ -1,0 +1,89 @@
+﻿<db:BidirectionalDashboard x:Class="VisualME7.Controls.PlainThermometer"
+      	 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="30" Height="135" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Grid x:Name="LayoutRoot" >
+        <Grid.Resources>
+            <Storyboard x:Name="_swipe" x:Key="_swipe">
+                <DoubleAnimationUsingKeyFrames x:Name="_scaleContainer" BeginTime="00:00:00" Storyboard.TargetName="_merc" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                    <SplineDoubleKeyFrame x:Name="_scale" KeyTime="00:00:0.72" Value="21.318"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames x:Name="_translateContainer" BeginTime="00:00:00" Storyboard.TargetName="_merc" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                    <SplineDoubleKeyFrame x:Name="_translate" KeyTime="00:00:0.72" Value="-44.917"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" x:Name="_animGrab" Storyboard.TargetName="_grabHandleCanvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.72"  x:Name="_grabFrame" Value="-100"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".9*"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width=".9*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.933*"/>
+            <RowDefinition Height="14"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Height="5.422" HorizontalAlignment="Left" Margin="2,106.125,0,0" x:Name="_merc" VerticalAlignment="Top" Width="6.834" Stroke="#FF000000" StrokeThickness="0" d:LayoutOverrides="Width" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1.583,0.483" StartPoint="-1,0.483">
+                    <GradientStop x:Name="_mercL0" Color="#FFF91414"/>
+                    <GradientStop x:Name="_mercH0" Color="#FFF93636" Offset="0.54500001668930054"/>
+                    <GradientStop x:Name="_mercL1" Color="#FFF91414" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse Height="11.125" Margin="0.311,0,0,0" VerticalAlignment="Bottom" Width="11.521"  StrokeThickness="0" HorizontalAlignment="Left" x:Name="_resevoir" Grid.Column="1">
+            <Ellipse.Fill>
+                <RadialGradientBrush GradientOrigin="0.267,0.204">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.332" ScaleY="1.332"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop x:Name="_mercL2" Color="#FFF91414"/>
+                    <GradientStop x:Name="_mercH1" Color="#FFF93636" Offset="0.54500001668930054"/>
+                    <GradientStop x:Name="_mercL3" Color="#FFF91414" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Path Height="120" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="12" Stretch="Fill" Stroke="#FF000000" Data="M5.9999995,0.5 C7.9329834,0.5 9.4999962,1.8431334 9.5,3.5 L9.5,105.84858 L9.8890867,106.11092 C10.884393,107.10622 11.5,108.48122 11.499998,110 C11.500002,113.03756 9.0375757,115.5 5.9999995,115.5 C2.9624276,115.5 0.49999762,113.03756 0.5,110 C0.49999881,108.48122 1.1156071,107.10622 2.1109114,106.11092 L2.5000005,105.84858 L2.5000005,3.5 C2.4999998,1.8431414 4.0670123,0.5 5.9999995,0.5 z" x:Name="_glass" Margin="0,0,0,0" Grid.Column="1">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="1.614,0.487" StartPoint="-0.969,0.487">
+                    <GradientStop Color="#546E6969" Offset="0.388"/>
+                    <GradientStop Color="#54FFFFFF" Offset="0.665"/>
+                    <GradientStop Color="#87FFFFFF" Offset="0.54900002479553223"/>
+                    <GradientStop Color="#546E6969" Offset="0.004"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <TextBlock x:Name="_text" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  VerticalAlignment="Top" Text="000" TextWrapping="NoWrap" Foreground="#FFFFFFFF" TextAlignment="Center" Margin="0.01,0,0.261,0" Height="14"   />
+
+        <Canvas Height="7.167" Margin="-4,0,-4,12.167" Visibility="Collapsed" x:Name="_grabHandleCanvas" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Bottom" Grid.Column="1" RenderTransformOrigin="0.5,0.5" >
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Path x:Name="_grabHandle"  Height="7" Width="20" Fill="#FFEADD4E" Stretch="Fill" Stroke="#FF020202" Data="M0.5,0.5 L5.5,3.471154 L0.5,6.5 z M19.125,0.50000006 L14.125,3.471154 L19.125,6.5 z M5.5000005,3.5000002 L14.708001,3.5000002"/>
+        </Canvas>
+
+    </Grid>
+</db:BidirectionalDashboard>

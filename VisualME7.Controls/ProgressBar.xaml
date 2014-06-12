@@ -1,0 +1,78 @@
+﻿<db:BidirectionalDashboard x:Class="VisualME7.Controls.ProgressBar"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="100" Height="28">
+    <Grid x:Name="LayoutRoot" >
+        <Grid.Resources>
+            <Storyboard x:Name="_moveGrab"  x:Key="_moveGrab">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_grabHandleCanvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                    <SplineDoubleKeyFrame x:Name="_handlePos" KeyTime="00:00:0.75" Value="92.75"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Name="_swipe"  x:Key="_swipe">
+                <PointAnimation x:Name="_startPoint" Storyboard.TargetName="pf" Storyboard.TargetProperty="StartPoint"
+        To="100,0" Duration="0:0:0.75" />
+                <PointAnimation x:Name="_topLeft" Storyboard.TargetName="seg1" Storyboard.TargetProperty="Point"
+        To="100,0" Duration="0:0:0.75" />
+                <PointAnimation x:Name="_botLeft" Storyboard.TargetName="seg4" Storyboard.TargetProperty="Point"
+        To="100,20" Duration="0:0:0.75" />
+            </Storyboard>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="4"/>
+        </Grid.RowDefinitions>
+
+        <Path Grid.Row="1" Width="100" Height="15" Stretch="Fill" Stroke="#FF000000" StrokeThickness="2" Canvas.Left="0" Canvas.Top="0" Data="M1,3 C1,1.8954305 1.8954305,1 3,1 L97,1 C98.104569,1 99,1.8954305 99,3 L99,12 C99,13.104569 98.104569,14 97,14 L3,14 C1.8954305,14 1,13.104569 1,12 z" x:Name="_coloured">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.56,-0.05" StartPoint="0.56,1.012">
+                    <GradientStop x:Name="_lowEnabled0" Color="#FF108EF6" Offset="0"/>
+                    <GradientStop x:Name="_highEnabled0" Color="#FFBCDDF8" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <Path  Grid.Row="1" Width="100" Height="15" Stretch="Fill" Stroke="#FF000000" StrokeThickness="2" Canvas.Left="0" Canvas.Top="0" Data="M1,3 C1,1.8954305 1.8954305,1 3,1 L97,1 C98.104569,1 99,1.8954305 99,3 L99,12 C99,13.104569 98.104569,14 97,14 L3,14 C1.8954305,14 1,13.104569 1,12 z" x:Name="_gray">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.56,-0.05" StartPoint="0.56,1.012">
+                    <GradientStop x:Name="_lowDisabled0"  Color="#FF6D6D80" Offset="0"/>
+                    <GradientStop x:Name="_highDisabled0" Color="#FFB5B5B5" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+
+            <Path.Clip>
+                <PathGeometry>
+                    <PathFigure x:Name="pf" IsClosed="True" StartPoint="0,0">
+                        <LineSegment x:Name="seg1" Point="0,0"/>
+                        <LineSegment x:Name="seg2" Point="100,0"/>
+                        <LineSegment x:Name="seg3" Point="100,15"/>
+                        <LineSegment x:Name="seg4" Point="0,15"/>
+                    </PathFigure>
+                </PathGeometry>
+
+            </Path.Clip>
+
+        </Path>
+        <Path  Grid.Row="1" Width="81" Height="13.667" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Canvas.Left="10" Canvas.Top="0.333" Data="M60.5,0.5 L70.5,0.5 70.5,12.5 60.5,12.5 60.5,0.5 z M40.5,0.5 L50.5,0.5 50.5,12.5 40.5,12.5 40.5,0.5 z M20.5,0.5 L30.5,0.5 30.5,12.5 20.5,12.5 20.5,0.5 z M0.5,0.5 L10.5,0.5 10.5,12.5 0.5,12.5 0.5,0.5 z M80.500003,-0.16699998 L80.500003,12.351" x:Name="_grid"/>
+
+
+        <Canvas  Height="7.167" Width="20" Visibility="Visible" x:Name="_grabHandleCanvas" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Margin="2.25,0,97.75,5.75" >
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Path x:Name="_grabHandle"  Height="7" Width="20" Fill="#FFEADD4E" Stretch="Fill" Stroke="#FF020202" Data="M0.5,0.5 L5.5,3.471154 L0.5,6.5 z M19.125,0.50000006 L14.125,3.471154 L19.125,6.5 z M5.5000005,3.5000002 L14.708001,3.5000002"/>
+        </Canvas>
+
+        <TextBlock Grid.RowSpan="3" IsHitTestVisible="False" x:Name="_text" Text="000" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" FontSize="10" Foreground="#FF030303" FontWeight="Bold" FontFamily="Portable User Interface" />
+
+
+    </Grid>
+</db:BidirectionalDashboard>

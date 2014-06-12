@@ -1,0 +1,77 @@
+﻿<db:Dashboard x:Class="VisualME7.Controls.WallThermometer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="48" Height="144" xmlns:VisualME7_Controls="clr-namespace:VisualME7.Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Grid x:Name="LayoutRoot" >
+
+        <Rectangle x:Name="_wood" IsHitTestVisible="False"  HorizontalAlignment="Left" Margin="-0.083,0.833,0,0" Width="47" Stroke="#FF000000" Height="142" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1.6139999628067,0.486999988555908" StartPoint="-0.968999981880188,0.486999988555908">
+                    <GradientStop Color="#FFADA76E" Offset="0.501"/>
+                    <GradientStop Color="#FFECEBDF" Offset="0.0040000001899898052"/>
+                    <GradientStop Color="#FFECEBDF" Offset="0.995"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+        <TextBlock IsHitTestVisible="False"  Height="10" Margin="1,5.333,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="15.5" HorizontalAlignment="Left" TextAlignment="Right" x:Name="_tl9" FontSize="6" Text="100"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,15.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" Text="90" FontSize="6" TextAlignment="Right" x:Name="_tl8"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,26.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="80" TextAlignment="Right" x:Name="_tl7"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,36.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Right" TextWrapping="Wrap" Text="70" FontSize="6" x:Name="_tl6"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,46.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="60" TextAlignment="Right" x:Name="_tl5"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,57.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="50" TextAlignment="Right" x:Name="_tl4"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,67.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="40" TextAlignment="Right" x:Name="_tl3"/>
+        <TextBlock  IsHitTestVisible="False" Height="10" HorizontalAlignment="Left" Margin="1,78.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="30" TextAlignment="Right" x:Name="_tl2"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,88.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Right" TextWrapping="Wrap" FontSize="6" Text="20" x:Name="_tl1"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="1,98.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="10" TextAlignment="Right" x:Name="_tl0"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,5.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Left" TextWrapping="Wrap" x:Name="_tr9" FontSize="6" Text="100" />
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,15.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="90" TextAlignment="Left" x:Name="_tr8"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,26.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="80" TextAlignment="Left" x:Name="_tr7"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,36.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Left" TextWrapping="Wrap" FontSize="6" Text="70" x:Name="_tr6"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,46.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="60" TextAlignment="Left" x:Name="_tr5"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,57.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="50" TextAlignment="Left" x:Name="_tr4"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,67.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="40" TextAlignment="Left" x:Name="_tr3"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,78.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="30" TextAlignment="Left" x:Name="_tr2"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,98.333,0,0" VerticalAlignment="Top" Width="15.5" TextWrapping="Wrap" FontSize="6" Text="10" TextAlignment="Left" x:Name="_tr1"/>
+        <TextBlock IsHitTestVisible="False"  Height="10" HorizontalAlignment="Left" Margin="29.667,88.333,0,0" VerticalAlignment="Top" Width="15.5" TextAlignment="Left" TextWrapping="Wrap" FontSize="6" Text="20" x:Name="_tr0"/>
+        <VisualME7_Controls:PlainThermometer Value="0" x:Name="_delegate"  HorizontalAlignment="Left" Margin="8.667,3.333,0,0" VerticalAlignment="Top"  d:LayoutOverrides="VerticalAlignment" IsEnabled="True" >
+            <VisualME7_Controls:PlainThermometer.Effect>
+                <DropShadowEffect/>
+            </VisualME7_Controls:PlainThermometer.Effect>
+        </VisualME7_Controls:PlainThermometer> 
+        <Rectangle IsHitTestVisible="False"  Height="4.75" HorizontalAlignment="Left" Margin="13.667,107.333,0,0" VerticalAlignment="Top" Width="19.5" d:LayoutOverrides="Height">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1.025,0.6" StartPoint="-0.025,0.55">
+                    <GradientStop Color="#FFA7A7A5" Offset="0.0040000001899898052"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.995"/>
+                    <GradientStop Color="#FFCFC8D0" Offset="0.319"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.263"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.751"/>
+                    <GradientStop Color="#FFCFC8D0" Offset="0.65"/>
+                    <GradientStop Color="#FFFFFDFF" Offset="0.47999998927116394"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle IsHitTestVisible="False"  Height="4.75" HorizontalAlignment="Left" Margin="13.667,22.333,0,0" VerticalAlignment="Top" Width="19.5">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1.037,0.85" StartPoint="-0.01,0.8">
+                    <GradientStop Color="#FFA7A7A5" Offset="0.0040000001899898052"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.995"/>
+                    <GradientStop Color="#FFCFC8D0" Offset="0.319"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.263"/>
+                    <GradientStop Color="#FFA7A7A5" Offset="0.751"/>
+                    <GradientStop Color="#FFCFC8D0" Offset="0.65"/>
+                    <GradientStop Color="#FFFFFDFF" Offset="0.47999998927116394"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse IsHitTestVisible="False"  Height="3.25" HorizontalAlignment="Left" Margin="29.667,23.333,0,0" VerticalAlignment="Top" Width="3.25" Fill="#FFE8E1E1"/>
+        <Ellipse IsHitTestVisible="False"  Height="3.25" HorizontalAlignment="Left" Margin="14.667,23.333,0,0" VerticalAlignment="Top" Width="3.25" Fill="#FFE8E1E1"/>
+        <Ellipse IsHitTestVisible="False"  Height="3.25" HorizontalAlignment="Left" Margin="14.667,108.333,0,0" VerticalAlignment="Top" Width="3.25" Fill="#FFE8E1E1"/>
+        <Ellipse IsHitTestVisible="False"  Height="3.25" HorizontalAlignment="Left" Margin="29.667,108.333,0,0" VerticalAlignment="Top" Width="3.25" Fill="#FFE8E1E1"/>
+
+
+    </Grid>
+</db:Dashboard> 

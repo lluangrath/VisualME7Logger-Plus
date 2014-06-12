@@ -1,0 +1,43 @@
+﻿<db:BinaryDashboard x:Class="VisualME7.Controls.RoundLed"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="100" Height="100">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        
+            <Grid.Resources>
+                <Storyboard x:Name="_swipe" x:Key="_swipe">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_false" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:0.6000000" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="_true" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:0.6000000" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </Grid.Resources>
+        <Grid.ColumnDefinitions> <ColumnDefinition Width="*"/> </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Ellipse HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Stroke="#FF000000" x:Name="_true">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop x:Name="trueHighColor" Color="#FF42F413" Offset="1"/>
+                    <GradientStop x:Name="trueLowColor" Color="#FFD0F9B5" Offset="0"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Ellipse HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Stroke="#FF000000" x:Name="_false">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop x:Name="falseHighColor" Color="#FFF41313" Offset="1"/>
+                    <GradientStop x:Name="falseLowColor" Color="#FFF9B5B5" Offset="0"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+    </Grid>
+</db:BinaryDashboard>

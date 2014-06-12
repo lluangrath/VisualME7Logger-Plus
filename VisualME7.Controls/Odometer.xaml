@@ -1,0 +1,12 @@
+﻿<db:PlatformIndependentDashboard x:Class="VisualME7.Controls.Odometer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+             
+            
+             >
+    <Grid x:Name="LayoutRoot" >
+        <StackPanel Orientation="Horizontal" x:Name="_stack">
+        </StackPanel>
+    </Grid>
+</db:PlatformIndependentDashboard>

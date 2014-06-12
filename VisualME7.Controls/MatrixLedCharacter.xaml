@@ -1,0 +1,71 @@
+﻿<db:PlatformIndependentDashboard x:Class="VisualME7.Controls.MatrixLedCharacter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="25" Height="35">
+    <Grid x:Name="LayoutRoot" >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="5"/>
+            </Grid.ColumnDefinitions>
+
+        <Ellipse x:Name="_l0_0" Grid.Row="0" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_0" Grid.Row="0" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_0" Grid.Row="0" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_0" Grid.Row="0" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_0" Grid.Row="0" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_1" Grid.Row="1" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_1" Grid.Row="1" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_1" Grid.Row="1" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_1" Grid.Row="1" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_1" Grid.Row="1" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_2" Grid.Row="2" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_2" Grid.Row="2" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_2" Grid.Row="2" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_2" Grid.Row="2" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_2" Grid.Row="2" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_3" Grid.Row="3" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_3" Grid.Row="3" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_3" Grid.Row="3" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_3" Grid.Row="3" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_3" Grid.Row="3" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_4" Grid.Row="4" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_4" Grid.Row="4" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_4" Grid.Row="4" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_4" Grid.Row="4" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_4" Grid.Row="4" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_5" Grid.Row="5" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_5" Grid.Row="5" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_5" Grid.Row="5" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_5" Grid.Row="5" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_5" Grid.Row="5" Grid.Column="4" Fill="#FFFD0909"/>
+
+        <Ellipse x:Name="_l0_6" Grid.Row="6" Grid.Column="0" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l1_6" Grid.Row="6" Grid.Column="1" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l2_6" Grid.Row="6" Grid.Column="2" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l3_6" Grid.Row="6" Grid.Column="3" Fill="#FFFD0909"/>
+        <Ellipse x:Name="_l4_6" Grid.Row="6" Grid.Column="4" Fill="#FFFD0909"/>
+
+            
+        </Grid>
+    </Grid>
+</db:PlatformIndependentDashboard>
+     

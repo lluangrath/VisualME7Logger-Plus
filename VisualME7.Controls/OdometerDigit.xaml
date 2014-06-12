@@ -1,0 +1,32 @@
+﻿<db:PlatformIndependentDashboard x:Class="VisualME7.Controls.OdometerDigit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:db="clr-namespace:VisualME7.Controls"
+    Width="40" Height="50">
+   <Grid x:Name="LayoutRoot" Background="Black">
+	<Grid.Resources>
+		<Storyboard x:Name="_swipe" x:Key="_swipe">
+			<DoubleAnimation FillBehavior="Stop" x:Name="_anim" From="-24" To="-56" BeginTime="00:00:00" Duration="00:00:00.10" Storyboard.TargetName="_image" Storyboard.TargetProperty="(Canvas.Top)">
+			</DoubleAnimation>
+		</Storyboard>
+	</Grid.Resources>
+	
+ 		<Canvas>
+    	<Image Canvas.Top = "-23" Source="odometerStrip.png" Width="40" Height="416" x:Name="_image" RenderTransformOrigin="0.5,0.5" >
+    		
+    	</Image>
+		</Canvas>
+    	
+    	<Rectangle Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Stroke="#FF000000">
+    		<Rectangle.Fill>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FF040404"/>
+    				<GradientStop Color="#FF000000" Offset="1"/>
+    				<GradientStop Color="#99A9A9A9" Offset="0.085"/>
+    				<GradientStop Color="#996E6C6C" Offset="0.938"/>
+    				<GradientStop Color="#994B4444" Offset="0.571"/>
+    			</LinearGradientBrush>
+    		</Rectangle.Fill>
+    	</Rectangle>
+    </Grid>
+</db:PlatformIndependentDashboard>
