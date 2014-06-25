@@ -127,6 +127,7 @@
             this.createECUFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnGauges = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpMeasurements.SuspendLayout();
@@ -1014,6 +1015,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnGauges);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtConfigFile);
@@ -1209,6 +1211,16 @@
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // btnGauges
+            // 
+            this.btnGauges.Location = new System.Drawing.Point(565, 60);
+            this.btnGauges.Name = "btnGauges";
+            this.btnGauges.Size = new System.Drawing.Size(75, 23);
+            this.btnGauges.TabIndex = 5;
+            this.btnGauges.Text = "Gauges";
+            this.btnGauges.UseVisualStyleBackColor = true;
+            this.btnGauges.Click += new System.EventHandler(this.btnGauges_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1358,6 +1370,7 @@
         private System.Windows.Forms.TextBox txtExpressionUnit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnGauges;
 
 
     }

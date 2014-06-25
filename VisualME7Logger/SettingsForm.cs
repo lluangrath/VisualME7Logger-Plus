@@ -293,6 +293,8 @@ namespace VisualME7Logger
 
             this.SaveSettings();
 
+            
+
             this.Visible = false;
             LineGraph logForm = new LineGraph(txtConfigFile.Text, this.CurrentProfile.LoggerOptions, this.CurrentProfile.DisplayOptions);
             logForm.ShowDialog(this);
@@ -828,6 +830,29 @@ namespace VisualME7Logger
 
             this.ExpressionEditMode = EditModes.View;
             SwitchUI();
+        }
+
+        private void btnGauges_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentProfile.LoggerOptions.ConnectionType != Session.LoggerOptions.ConnectionTypes.LogFile)
+            {
+                if (this.SaveConfigFile() == null)
+                {
+                    return;
+                }
+            }
+
+            this.SaveSettings();
+            this.Visible = false;
+            LineGraph logForm = new LineGraph(txtConfigFile.Text, this.CurrentProfile.LoggerOptions, this.CurrentProfile.DisplayOptions);
+            logForm.ShowDialog(this);
+
+            this.SaveSettings();
+
+            this.lstGraphVariables.DataSource = null;
+            this.lstGraphVariables.DataSource = this.CurrentProfile.DisplayOptions.GraphVariables;
+
+            this.Visible = true;
         }
     }
 
