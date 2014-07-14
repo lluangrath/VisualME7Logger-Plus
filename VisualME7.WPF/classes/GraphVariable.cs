@@ -5,11 +5,31 @@ using System.Text;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace VisualME7.WPF.classes
 {
-    public class GraphVariable
+    public class GraphVariable : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private float _varInt;
+        public float VarInt
+        {
+            get
+            {
+                return _varInt;
+            }
+            set
+            {
+                _varInt = value;
+                if (PropertyChanged != null)
+                {
+                    this.PropertyChanged(this, new PropertyChangedEventArgs("VarInt"));
+                }
+            }
+
+        }
+
         public bool Active { get; set; }
         public string Variable { get; set; }
         public string Name { get; set; }

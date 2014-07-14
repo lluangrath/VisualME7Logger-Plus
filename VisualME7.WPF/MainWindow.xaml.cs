@@ -12,15 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using Elysium;
 using VisualME7.WPF.classes;
 using VisualME7Logger.Configuration;
+using VisualME7.WPF.viewmodel;
 
 namespace VisualME7.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Elysium.Controls.Window
     {
         enum EditModes
         {
@@ -236,6 +238,17 @@ namespace VisualME7.WPF
             //lblMeasurementCount.Text = string.Format("Showing {0} of {1}",
             //    filtered.Count,
             //    this.CurrentProfile.ECUFile.Measurements.Values.Count());
+        }
+
+        public void btnDash_click(object sender, RoutedEventArgs e)
+        {
+            var wd = new wdwDash();
+            wd.ShowDialog();
+        }
+
+        private void btnMeasurements_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,8 +1,53 @@
-﻿<Window x:Class="VisualME7.WPF.wdwGauges"
+﻿<Window x:Class="VisualME7.WPF.wdwDash"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="wdwGauges" Height="300" Width="300">
+        Title="wdwDash" Height="600" Width="800">
+
     <Grid>
-        
+        <chart:RadialGaugeChart 
+            Name="chrtRPM"
+            Visibility="Visible"
+            ChartTitle="RPM" 
+            ChartSubTitle="Engine RPM" 
+            Style="{DynamicResource ChartStyleVariableSize}"
+            SeriesSource="{Binding Path=Series}">
+            <chart:RadialGaugeChart.SeriesTemplate>
+                <DataTemplate>
+                <chart:ChartSeries
+                    SeriesTitle="{Binding Path=SeriesDisplayName}"
+                    DisplayMember="Name"
+                    ValueMember="VarInt"
+                    ItemsSource="{Binding Path=Items}"
+                    />
+                </DataTemplate>
+            </chart:RadialGaugeChart.SeriesTemplate>
+        </chart:RadialGaugeChart>
+        <ItemsControl
+            ItemsSource="{Binding Path=Series}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ListBox 
+                        BorderThickness="0"   
+                        Background="Transparent"
+                        ItemsSource="{Binding Path=Items}" 
+                        >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
+                                    <TextBox Width="50" Background="White" Margin="0 0 0 0" BorderBrush="DarkGray" Grid.Column="1" HorizontalAlignment="Right" Text="{Binding Path=VarInt, Mode=TwoWay}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </Window>
