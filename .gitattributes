@@ -1,0 +1,53 @@
+# Default: detect text files automatically and normalize line endings to LF in repo.
+* text=auto eol=lf
+
+# .NET source code: always LF in repo
+*.cs        text eol=lf
+*.csproj    text eol=lf
+*.props     text eol=lf
+*.targets   text eol=lf
+*.config    text eol=lf
+*.manifest  text eol=lf
+*.resx      text eol=lf
+*.xaml      text eol=lf
+*.xml       text eol=lf
+*.json      text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+
+# Visual Studio solution files: traditionally CRLF
+*.sln       text eol=crlf
+
+# Windows shell scripts: must be CRLF
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+*.ps1       text eol=crlf
+
+# Unix shell scripts: must be LF
+*.sh        text eol=lf
+
+# Native logger config / log files: keep as-is
+*.cfg       text eol=lf
+*.csv       text eol=lf
+*.map       text eol=lf
+
+# Binary files: never munge line endings
+*.dll       binary
+*.exe       binary
+*.pdb       binary
+*.bin       binary
+*.ico       binary
+*.png       binary
+*.jpg       binary
+*.gif       binary
+*.pfx       binary
+*.snk       binary
+*.lib       binary
+*.a         binary
+*.so        binary
+
+# ME7 ECU artifacts: binary blobs (despite .ecu being plaintext, .commdata and .measgroups are mixed)
+*.ecu       text eol=lf
+*.commdata  binary
+*.measgroups binary
