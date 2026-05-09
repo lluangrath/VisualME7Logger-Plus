@@ -1,279 +1,264 @@
-# Phase 1b — SDK-Style + .NET 8 Migration (Windows / `dotnet` work)
+# Phase 1b — Build, Fix, and Smoke-Test on .NET 8
 
-**Why this doc exists:** Phase 1a (mechanical text edits — UTF7→UTF8, Scc strip,
-ILMerge removal) was completed in the automated sandbox session. The remaining
-Phase 1 work needs the `dotnet build` → fix → repeat loop, which only your
-Windows machine has. This doc is the executable handoff.
+> **Status update (commit `7c777f6`):** the SDK-style csproj conversion has
+> been committed to the `modernize` branch directly, bypassing
+> `dotnet/try-convert` entirely. `try-convert` errors against the .NET 8 SDK
+> with a `System.Runtime, Version=8.0.0.0` assembly-binding failure (a known
+> incompatibility — see [dotnet/docs #36659](https://github.com/dotnet/docs/issues/36659)).
+> Both projects now target `net8.0-windows`, NCalc is on the `NCalcSync` NuGet
+> package, and the System.Windows.Forms.DataVisualization charting control is
+> on the `WinForms.DataVisualization` NuGet package — all baked into the
+> csproj files.
+>
+> **What's left for you to do:** restore packages, run a build, fix the few
+> expected source-level breakages, and confirm the legacy WinForms app runs
+> against a sample log file on .NET 8.
 
-**Time estimate:** 1-2 hours of focused work. Can be split into Phase 1b.1
-(SDK conversion + build green) and Phase 1b.2 (rename + namespace cleanup).
+**Time estimate:** 30-90 minutes.
 
 ---
 
 ## 0. Prerequisites
 
 ```powershell
-# Verify .NET 8 SDK is installed (any version 8.0.x works)
+# Verify .NET 8 SDK is installed
 dotnet --list-sdks
-# If not installed: https://dotnet.microsoft.com/download/dotnet/8.0
+# Should show at least one 8.0.x line. If not:
+# https://dotnet.microsoft.com/download/dotnet/8.0
 
-# Install try-convert — Microsoft's official legacy-csproj-to-SDK-style tool
-dotnet tool install -g try-convert
-# (or: dotnet tool update -g try-convert if already installed)
-
-# Pull the latest modernize branch (gets Phase 1a commits)
+# Pull the latest modernize branch (gets commit 7c777f6 with SDK csprojs)
 cd C:\Users\larry\Claude_Projects\VisualME7Logger\VisualME7Logger-Plus
 git checkout modernize
-git pull origin modernize  # if you've pushed; otherwise skip
+git pull origin modernize
 ```
+
+> No `try-convert` install required — bypassed. The PowerShell commands in
+> the previous version of this doc that involved `try-convert -w ...` are no
+> longer needed.
 
 ---
 
-## 1. SDK-Style Conversion
-
-### 1a. Auto-convert with `try-convert`
-
-```powershell
-# Convert the entire solution at once
-try-convert -w ME7Visual.sln
-
-# OR per-project if the bulk run errors:
-# try-convert -p src\VisualME7Logger.Output\VisualME7Logger.Output.csproj
-# try-convert -p src\VisualME7Logger\VisualME7Logger.csproj
-```
-
-`try-convert` will:
-- Replace the verbose `<Project ToolsVersion="12.0">` header with `<Project Sdk="Microsoft.NET.Sdk">`
-- Drop the `<Import Project="...Microsoft.Common.props">` and `...Microsoft.CSharp.targets` imports (SDK includes them)
-- Convert `<Compile Include="*.cs">` to implicit globbing
-- Convert `<Reference Include="System.X" />` to implicit framework references
-- Preserve your `<EmbeddedResource>` and `<Content>` items
-
-### 1b. Set target framework to .NET 8 (Windows)
-
-After try-convert, both csprojs will probably target `net48` or similar. Edit
-each to target `net8.0-windows`:
-
-**`src/VisualME7Logger.Output/VisualME7Logger.Output.csproj`** — top PropertyGroup should look like:
-```xml
-<PropertyGroup>
-  <TargetFramework>net8.0-windows</TargetFramework>
-  <Nullable>disable</Nullable>
-  <LangVersion>latest</LangVersion>
-  <RootNamespace>VisualME7Logger.Output</RootNamespace>
-  <AssemblyName>VisualME7Logger.Output</AssemblyName>
-</PropertyGroup>
-```
-
-**`src/VisualME7Logger/VisualME7Logger.csproj`** — top PropertyGroup should look like:
-```xml
-<PropertyGroup>
-  <OutputType>WinExe</OutputType>
-  <TargetFramework>net8.0-windows</TargetFramework>
-  <UseWindowsForms>true</UseWindowsForms>
-  <UseWPF>true</UseWPF>
-  <Nullable>disable</Nullable>
-  <LangVersion>latest</LangVersion>
-  <RootNamespace>VisualME7Logger</RootNamespace>
-  <AssemblyName>VisualME7Logger</AssemblyName>
-  <ApplicationIcon>Icon.ico</ApplicationIcon>
-  <ApplicationManifest>app.manifest</ApplicationManifest>
-</PropertyGroup>
-```
-
-> **Note:** Don't rename `RootNamespace` / `AssemblyName` yet — that happens in
-> step 4 below, after the project is building cleanly. Fewer moving parts at once.
-
----
-
-## 2. Replace File-Referenced DLLs With NuGet PackageReferences
-
-In `src/VisualME7Logger.Output/VisualME7Logger.Output.csproj`, find and **delete**:
-
-```xml
-<Reference Include="NCalc, Version=1.3.8.0, Culture=neutral, processorArchitecture=MSIL">
-  <SpecificVersion>False</SpecificVersion>
-  <HintPath>resources\NCalc.dll</HintPath>
-</Reference>
-```
-
-Then add NuGet packages:
-
-```powershell
-cd src\VisualME7Logger.Output
-dotnet add package NCalcSync         # modern fork of NCalc, .NET 8 compatible
-cd ..\..
-
-cd src\VisualME7Logger
-# In Phase 1 we need the WinForms charting control; this is a community port
-# of the legacy System.Windows.Forms.DataVisualization namespace.
-dotnet add package WinForms.DataVisualization
-cd ..\..
-```
-
-Once you confirm the NuGet packages are restored and build, you can delete the
-bundled DLLs (which were shipped via file-reference):
-
-```powershell
-Remove-Item src\VisualME7Logger.Output\resources\NCalc.dll
-Remove-Item src\VisualME7Logger.Output\resources\Antlr3.Runtime.dll
-```
-
-(Antlr3 was a transitive dep of NCalc 1.3.8 — `NCalcSync` doesn't need it.)
-
----
-
-## 3. First Build + Fix Loop
+## 1. Restore + First Build
 
 ```powershell
 dotnet restore
 dotnet build
 ```
 
-**Expected breakages (fix these as they appear):**
+`dotnet restore` should resolve:
+- `NCalcSync` (latest stable — likely 3.x)
+- `WinForms.DataVisualization` (latest — likely 1.9.x)
 
-### 3a. `BinaryFormatter` removed in .NET 8
-If anything in your code or settings serializes/deserializes via
-`BinaryFormatter`, it'll fail to compile. Replace with `System.Text.Json`:
+After first restore, **pin the versions** by replacing `Version="*"` with the
+actual resolved version in each csproj. Find resolved versions with:
+
+```powershell
+dotnet list src\VisualME7Logger.Output\VisualME7Logger.Output.csproj package
+dotnet list src\VisualME7Logger\VisualME7Logger.csproj package
+```
+
+(Floating wildcards are OK to start — but pinning produces deterministic
+builds. Commit the pinned versions as a follow-up "chore: pin NuGet
+versions".)
+
+---
+
+## 2. Expected Build Breakages and Fixes
+
+`dotnet build` will likely surface 3-5 errors. Walk through them in order:
+
+### 2a. `BinaryFormatter` removed in .NET 8
+
+**Symptom:**
+```
+error SYSLIB0011: 'BinaryFormatter.Serialize(Stream, object)' is obsolete:
+  'BinaryFormatter serialization is obsolete and should not be used.'
+```
+or in stricter builds:
+```
+error CS0246: The type or namespace name 'BinaryFormatter' could not be found.
+```
+
+**Where to look:** Any code that serializes profiles or settings to disk.
+Likely in `SettingsForm.cs` around the LoadSettings / SaveSettings methods.
+
+**Fix:** Replace with `System.Text.Json`.
 
 ```csharp
 // OLD
+using System.Runtime.Serialization.Formatters.Binary;
+...
 using (var fs = File.OpenRead(path))
     return (Profile)new BinaryFormatter().Deserialize(fs);
 
 // NEW
+using System.Text.Json;
+...
 return JsonSerializer.Deserialize<Profile>(File.ReadAllText(path));
 ```
 
-### 3b. `WindowsIdentity.GetCurrent()` / admin check
-In `SettingsForm.cs` lines 52-63 there's an `#if !DEBUG` block that warns when
-not running as admin. The API still exists in .NET 8 but the check is no longer
-needed (the WPF rebuild won't require elevation either). **Just delete that
-`#if !DEBUG ... #endif` block.**
+For the writing side:
+```csharp
+// OLD
+using (var fs = File.Create(path))
+    new BinaryFormatter().Serialize(fs, profile);
 
-### 3c. `WebClient` → `HttpClient`
-If you see `WebClient` anywhere (it's marked obsolete), swap to `HttpClient`.
-Your repo doesn't use it as far as Phase 0 audit could tell, so this may be a
-no-op.
-
-### 3d. AssemblyInfo duplicates
-SDK-style projects auto-generate `AssemblyVersion`, `AssemblyTitle`, etc., so
-the existing `Properties/AssemblyInfo.cs` will produce CS0579 "duplicate
-attribute" errors. Either:
-- Delete the file, OR
-- Keep it and add `<GenerateAssemblyInfo>false</GenerateAssemblyInfo>` to the csproj
-
-Recommend: **delete it** and let the SDK generate the metadata from csproj
-properties.
-
-### 3e. `app.config` `<supportedRuntime version="v4.0">`
-The `App.config` references .NET FW 4.0. Either delete `App.config` (SDK
-projects don't need it for runtime selection) or update it to:
-```xml
-<configuration>
-  <startup>
-    <supportedRuntime version="v8.0" />
-  </startup>
-</configuration>
+// NEW
+File.WriteAllText(path, JsonSerializer.Serialize(profile,
+    new JsonSerializerOptions { WriteIndented = true }));
 ```
 
-### 3f. PolyMonControls.dll
-This DLL ships in `src/VisualME7Logger/resources/controls/` but was never
-actually `<Reference>`-d (Phase 0 audit confirmed). After SDK conversion the
-implicit `<Content>` glob may pick it up — that's fine, it stays in the output
-folder but is unused. The Phase 3 WPF rebuild deletes it entirely.
+> **Migration note:** existing user profiles serialized as binary will no
+> longer load. If you have old profiles to preserve, do one final read with
+> a `BinaryFormatter` re-enable via
+> `<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>`
+> in the csproj, write them out as JSON, then remove the unsafe property.
+
+### 2b. `WindowsIdentity.GetCurrent()` admin check
+
+**Symptom:** Either compiles fine but produces a useless warning popup, OR
+compiles fine and you can ignore it. The API still exists in .NET 8.
+
+**Where:** `src/VisualME7Logger/SettingsForm.cs` lines 52-63 — the
+`#if !DEBUG` block that pops a "you should run as admin" message.
+
+**Fix:** Just **delete the entire `#if !DEBUG ... #endif` block.** Modern
+COM-port access doesn't need elevation, and the WPF rebuild won't either.
+
+### 2c. AssemblyInfo.cs "duplicate attribute" (only if you edit `<GenerateAssemblyInfo>`)
+
+**Symptom (if you flip GenerateAssemblyInfo to true):**
+```
+error CS0579: Duplicate 'AssemblyTitle' attribute
+error CS0579: Duplicate 'AssemblyVersion' attribute
+```
+
+**Why it doesn't happen by default:** the new csprojs set
+`<GenerateAssemblyInfo>false</GenerateAssemblyInfo>`, so the existing
+`Properties/AssemblyInfo.cs` files stay as the source of truth and there's
+no duplicate.
+
+**Fix (optional cleanup, not required):** delete `Properties/AssemblyInfo.cs`
+in both projects, then remove the `<GenerateAssemblyInfo>false</GenerateAssemblyInfo>`
+line from each csproj. The SDK will then generate metadata from the csproj's
+`<AssemblyName>`, `<RootNamespace>`, etc.
+
+### 2d. App.config `<supportedRuntime>`
+
+**Symptom:** Build fine. The element is silently ignored by .NET 8.
+
+**Where:** `src/VisualME7Logger/App.config` has:
+```xml
+<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+```
+
+**Fix (optional):** delete `App.config` entirely (modern .NET doesn't need
+runtime selection there) OR replace its body with an empty `<configuration/>`.
+
+### 2e. `WebClient` / other obsolete APIs
+
+**Symptom:**
+```
+warning SYSLIB0014: 'WebClient' is obsolete: 'WebRequest, HttpWebRequest,
+  ServicePoint, and WebClient are obsolete. Use HttpClient instead.'
+```
+
+**Where:** Phase 0 audit didn't find any `WebClient` usage in the codebase,
+so this likely doesn't apply. If it appears, swap to `HttpClient`.
+
+### 2f. `Resources.Designer.cs` namespace mismatch (rare)
+
+**Symptom:** "Could not find type 'X' in assembly 'Y'" errors related to
+`Properties.Resources`.
+
+**Fix:** Open `Properties/Resources.resx` in Visual Studio (or right-click >
+Run Custom Tool: ResXFileCodeGenerator). VS regenerates `Resources.Designer.cs`
+matching the SDK conventions.
 
 ---
 
-## 4. Smoke Test: Run the Legacy App on .NET 8
+## 3. Smoke Test: Run the Legacy App on .NET 8
 
 ```powershell
 dotnet run --project src\VisualME7Logger\VisualME7Logger.csproj
 ```
 
 When the SettingsForm opens:
+
 1. Choose Connection → "Log file" (no ECU needed)
-2. Browse to `src\VisualME7Logger.Output\resources\ME7Logger\logs\allroad-config_20131016_213900.csv`
-3. Hit Start → the LineGraph form should open and play back the saved Audi A6 allroad telemetry.
+2. Browse to:
+   `src\VisualME7Logger.Output\resources\ME7Logger\logs\allroad-config_20131016_213900.csv`
+3. Hit Start → the LineGraph form should open and play back the saved
+   Audi A6 allroad telemetry from October 2013.
 
-**This is the Phase 1 done-line:** the WinForms app from 2013 is running on .NET 8 against an existing log fixture, confirming that all the parsing and charting code survived the SDK migration.
+**This is the Phase 1 done-line** ✅: the WinForms app from 2013 is running on
+.NET 8 against an existing log fixture, confirming that all the parsing and
+charting code survived the SDK migration.
 
-Commit:
+If the line graph renders, commit any source-level fixes you made:
+
 ```powershell
 git add -A
-git commit -m "refactor: convert csproj files to SDK-style on .NET 8
+git commit -m "fix: address .NET 8 build breakages
 
-- Both projects now target net8.0-windows
-- NCalc replaced with NCalcSync NuGet (Antlr3.Runtime no longer needed)
-- WinForms.DataVisualization NuGet replaces the BCL System.Windows.Forms.DataVisualization
-- BinaryFormatter usage replaced with System.Text.Json
-- Admin check removed
-- App.config refreshed for v8.0
-- AssemblyInfo.cs deleted (SDK generates from csproj)
+- BinaryFormatter -> System.Text.Json in SettingsForm.cs
+- Removed admin-check popup in SettingsForm.cs
+- (other fixes as encountered)
 
 Smoke-tested by replaying allroad-config_20131016_213900.csv in
-LogFile mode — line graph renders identical to the legacy build."
+LogFile mode -- LineGraph renders identical to the legacy build."
 ```
 
 ---
 
-## 5. Project + Namespace Rename (Phase 1b.2 — separate session OK)
+## 4. (Optional) Project + Namespace Rename — Phase 1b.2
 
-This is a clean follow-up commit once the app is building and running.
+Can be a separate session. Only do this once the build is green.
 
-### 5a. Rename project folders + assemblies
+### 4a. Rename project folders + assemblies
 
 ```powershell
 git mv src\VisualME7Logger src\ME7Visual.WinFormsLegacy
 git mv src\VisualME7Logger.Output src\ME7Visual.Core
 
-# Rename the .csproj files inside each folder
-git mv src\ME7Visual.WinFormsLegacy\VisualME7Logger.csproj src\ME7Visual.WinFormsLegacy\ME7Visual.WinFormsLegacy.csproj
-git mv src\ME7Visual.Core\VisualME7Logger.Output.csproj src\ME7Visual.Core\ME7Visual.Core.csproj
-
-# Update paths inside ME7Visual.sln (and rename project display names)
-# Easiest: open ME7Visual.sln in VS 2022 — it'll prompt to "fix project paths"
-# and update the GUIDs/names automatically.
-
-# Update RootNamespace and AssemblyName in each csproj
-# ME7Visual.WinFormsLegacy.csproj:
-#   <RootNamespace>ME7Visual.WinFormsLegacy</RootNamespace>
-#   <AssemblyName>ME7Visual.WinFormsLegacy</AssemblyName>
-# ME7Visual.Core.csproj:
-#   <RootNamespace>ME7Visual.Core</RootNamespace>
-#   <AssemblyName>ME7Visual.Core</AssemblyName>
-
-# Update the ProjectReference inside ME7Visual.WinFormsLegacy.csproj:
-#   <ProjectReference Include="..\ME7Visual.Core\ME7Visual.Core.csproj">
+git mv src\ME7Visual.WinFormsLegacy\VisualME7Logger.csproj `
+       src\ME7Visual.WinFormsLegacy\ME7Visual.WinFormsLegacy.csproj
+git mv src\ME7Visual.Core\VisualME7Logger.Output.csproj `
+       src\ME7Visual.Core\ME7Visual.Core.csproj
 ```
 
-### 5b. Namespace rename
+Then update **inside** each csproj:
+```xml
+<RootNamespace>ME7Visual.WinFormsLegacy</RootNamespace>
+<AssemblyName>ME7Visual.WinFormsLegacy</AssemblyName>
+```
+(and similar for Core)
 
-The legacy code uses:
-- `namespace VisualME7Logger.Output` (in Core) → `namespace ME7Visual.Core`
+And update the `<ProjectReference>` in `ME7Visual.WinFormsLegacy.csproj`:
+```xml
+<ProjectReference Include="..\ME7Visual.Core\ME7Visual.Core.csproj" />
+```
+
+And update the project paths inside `ME7Visual.sln` — easiest in VS 2022:
+open the .sln, it'll prompt to fix the broken project paths.
+
+### 4b. Namespace rename (use IDE refactoring — not sed)
+
+Legacy code uses:
+- `namespace VisualME7Logger.Output` → `namespace ME7Visual.Core`
 - `namespace VisualME7Logger.Log` → `namespace ME7Visual.Core.Log`
 - `namespace VisualME7Logger.Session` → `namespace ME7Visual.Core.Session`
 - `namespace VisualME7Logger.Common` → `namespace ME7Visual.Core.Common`
 - `namespace VisualME7Logger.Configuration` → `namespace ME7Visual.WinFormsLegacy.Configuration`
 - `namespace VisualME7Logger` (in WinForms) → `namespace ME7Visual.WinFormsLegacy`
 
-**Use ReSharper, Rider, or VS 2022's "Rename namespace" refactoring** — it
-updates every `using` directive across the solution at once, which sed cannot
-do safely.
+**Use ReSharper / Rider / VS 2022's "Rename namespace" refactoring** — it
+updates every `using` directive across the solution at once. **Don't sed**:
+string literals like `Path.Combine(ME7LoggerDirectory, "VisualME7LoggerOutput.txt")`
+and settings keys would also be replaced incorrectly.
 
-If doing by hand:
-```powershell
-# In src\ME7Visual.Core\ — replace namespace VisualME7Logger.* with ME7Visual.Core.*
-# In src\ME7Visual.WinFormsLegacy\ — replace namespace VisualME7Logger.* with ME7Visual.WinFormsLegacy.*
-# Then fix all `using VisualME7Logger.X` references across both projects
-dotnet build  # iterate until clean
-```
+`dotnet build` after each rename to catch issues early.
 
-> **Why not sed?** String literals like
-> `Path.Combine(ME7LoggerDirectory, "VisualME7LoggerOutput.txt")` and settings
-> keys would also be replaced. The IDE refactoring is namespace-aware; sed is not.
-
-Commit:
 ```powershell
 git commit -m "refactor: rename projects and namespaces to ME7Visual.*
 
@@ -281,47 +266,38 @@ git commit -m "refactor: rename projects and namespaces to ME7Visual.*
 - src/VisualME7Logger.Output -> src/ME7Visual.Core
 - namespace VisualME7Logger.* -> ME7Visual.Core.* / ME7Visual.WinFormsLegacy.*
 
-Note: ME7Visual.WinFormsLegacy is a temporary holding spot for the
-2013 UI code; it gets deleted at the end of Phase 3 once the WPF
-rebuild reaches feature parity."
+ME7Visual.WinFormsLegacy is a temporary holding spot for the 2013 UI;
+gets deleted at the end of Phase 3 once the WPF rebuild reaches parity."
 ```
 
 ---
 
-## 6. Push and Open the Phase 1 Wrap-Up Issue
+## 5. Push and Wrap Up
 
 ```powershell
 git push origin modernize
 
-# Open a GitHub Issue titled "Phase 1 complete - .NET 8 migration"
-# linking to:
-# - The build log showing 0 errors / 0 warnings on net8.0-windows
-# - A screenshot of the LineGraph rendering the allroad replay log
-# - This PHASE_1B.md as the executed plan
+# Open a GitHub Issue / Project card titled "Phase 1 complete - .NET 8 migration"
+# Attach:
+# - dotnet build output (0 errors)
+# - Screenshot of LineGraph rendering the allroad replay log
 ```
 
----
-
-## What Phase 1b Unlocks
-
-After this is merged, **Phase 2** (Core extraction + ITelemetryStream seam) is
-mostly cosmetic refactoring inside `ME7Visual.Core`:
-- Move types into `Streaming/`, `Session/`, `Parsing/` sub-folders
-- Add the `ME7Visual.Streaming` netstandard2.0 project with `ITelemetryStream`
-- First xUnit tests against the existing CSV fixtures
-
-That's all sandbox-friendly work — I can drive Phase 2 through the file/edit
-tools once you've handed me a building .NET 8 codebase.
+**After this is merged, ping me and I'll drive Phase 2** — Core extraction +
+ITelemetryStream seam. That's all internal-refactor work inside a building
+codebase, sandbox-friendly: I can do it without dotnet because the Phase 4
+test suite catches regressions later.
 
 ---
 
-## Stuck? Quick Diagnosis Tips
+## Stuck? Quick Diagnosis
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `try-convert` errors on a project | Custom MSBuild targets it can't translate | Convert by hand using the SDK template at top of this doc |
-| `CS0246: type or namespace name 'XYZ' could not be found` | Missing `using` or NuGet package | Check whether the type was in `System.Windows.Forms.DataVisualization` (now NuGet-only) |
-| `error MSB4019: imported project ...not found` | Stale `<Import>` left over from try-convert | Delete the offending `<Import>` line |
-| `CS0579: Duplicate 'AssemblyTitle' attribute` | Old `Properties/AssemblyInfo.cs` conflicts with SDK auto-gen | Delete `Properties/AssemblyInfo.cs` |
-| App throws on startup, complains about `App.config` | .NET FW runtime version reference | Replace `<supportedRuntime version="v4.0">` with `v8.0` or delete `App.config` |
-| Native ME7Logger.exe not found at runtime | Working directory / path to `bin/` | Verify `Program.cs:ME7LoggerDirectory` resolves to a folder containing `ME7Logger.exe` |
+| `NU1101: Unable to find package 'NCalcSync'` | NuGet feed not configured for nuget.org | `dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org` |
+| `NU1101: Unable to find package 'WinForms.DataVisualization'` | Same | Same as above |
+| `CS0246: type or namespace 'X' could not be found` after restore | Old `using` references something now in a different namespace | Add `using` for the new namespace, or check the package's docs |
+| `error MSB4019: imported project ... not found` | Should not happen — SDK style doesn't import legacy props/targets | Ensure you pulled commit `7c777f6` cleanly (no merge conflicts) |
+| `CS0579: Duplicate 'AssemblyTitle'` | You set `<GenerateAssemblyInfo>true</GenerateAssemblyInfo>` and kept `Properties/AssemblyInfo.cs` | Either delete `Properties/AssemblyInfo.cs` or set `<GenerateAssemblyInfo>false</GenerateAssemblyInfo>` |
+| Native ME7Logger.exe not found at runtime | RealTime mode was selected; `Program.cs` resolves `ME7LoggerDirectory` to where the .exe is | Either use LogFile mode (no native binary needed) or pass the path as a command-line arg: `dotnet run -- "src\VisualME7Logger.Output\resources\ME7Logger\bin"` |
+| `dotnet build` hangs forever | NuGet restore stuck on a broken cache | `dotnet nuget locals all --clear` then retry |
