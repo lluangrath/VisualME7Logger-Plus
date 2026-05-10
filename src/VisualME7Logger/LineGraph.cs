@@ -383,6 +383,11 @@ namespace VisualME7Logger
                     s.Enabled = graphVariable.Active;
                     s.ToolTip = "so tool tips show up";
                     chart1.Series.Add(s);
+                    // Use point index for X-axis positioning (ignore the X=-1 seed values).
+                    // Without this, the modern WinForms.DataVisualization NuGet port
+                    // crushes all real points into a thin vertical strip because of the
+                    // 1200 seed points all stacked at X=-1.
+                    s.IsXValueIndexed = true;
 
                     for (int i = 0; i < this.DisplayOptions.GraphHRes; ++i)
                     {
