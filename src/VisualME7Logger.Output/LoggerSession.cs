@@ -572,7 +572,7 @@ namespace VisualME7Logger.Session
             if (_exp == null)
             {
                 _exp = new NCalc.Expression(this.Expression);
-                _exp.EvaluateParameter += delegate(string name, NCalc.ParameterArgs args)
+                _exp.EvaluateParameter += delegate(string name, NCalc.Handlers.ParameterArgs args)
                 {
                     Variable var = curLL.GetVariableByName(name);
                     if (var != null)
