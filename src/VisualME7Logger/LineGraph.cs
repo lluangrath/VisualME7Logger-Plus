@@ -389,10 +389,9 @@ namespace VisualME7Logger
                     // 1200 seed points all stacked at X=-1.
                     s.IsXValueIndexed = true;
 
-                    for (int i = 0; i < this.DisplayOptions.GraphHRes; ++i)
-                    {
-                        s.Points.Add(-1, -1).AxisLabel = "0";
-                    }
+                    // No seed loop -- chart grows from the right as real
+                    // data arrives. Old points trimmed in PlotLineOnChart
+                    // only after Count exceeds GraphHRes.
                 }
             }
 
@@ -420,7 +419,10 @@ namespace VisualME7Logger
                         p.ToolTip = string.Format("{0}: {1} {2}", graphVariable.Name, v.Value, v.SessionVariable.Unit);
                         p.Tag = v;
                     }
-                    s.Points.RemoveAt(0);
+                    if (s.Points.Count > this.DisplayOptions.GraphHRes)
+                    {
+                        s.Points.RemoveAt(0);
+                    }
                 }
             }
         }
