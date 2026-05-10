@@ -579,10 +579,6 @@ namespace VisualME7Logger.Session
                     {
                         args.Result = var.Value;
                     }
-                    else
-                    {
-                        args.HasResult = false;
-                    }
                 };
             }
             object obj = "ERR";
